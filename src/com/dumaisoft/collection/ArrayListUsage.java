@@ -8,7 +8,7 @@ import java.util.HashSet;
  * Project:     JavaExampleCode
  * Create Date: 2016/4/3
  * Create Time: 22:15
- * Description: introduce the base usage of ArrayList.
+ * Description: Introduce the base usage of ArrayList.
  */
 public class ArrayListUsage {
     public static void main(String[] args) {
