@@ -23,6 +23,7 @@ public class DateAndTimeUsage {
 
 
     private static void setTime() {
+        System.out.println("---------------setTime---------------");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 
         //first,set year,month and day
@@ -31,7 +32,7 @@ public class DateAndTimeUsage {
         System.out.println(simpleDateFormat.format(calendar.getTime()));
 
         //second, set year,month,day,hour,minute and second
-        calendar.set(2016,3,2,22,21,50);
+        calendar.set(2016,3,2,24,0,0);       //notice , if you set hour to 24, then you will get a tomorrow time.
         System.out.println(simpleDateFormat.format(calendar.getTime()));
 
         //third,set every field
