@@ -1,5 +1,7 @@
 package com.dumaisoft.language;
 
+import com.dumaisoft.reflection.ReflectionUtils;
+
 /**
  * Author:      wxb
  * Project:     JavaExampleCode
@@ -22,11 +24,10 @@ public class StringUsage {
         subString();
         trimString();
         typeTransform();
-
     }
 
     private static void typeTransform() {
-        System.out.println("---------------typeTransform---------------");
+        ReflectionUtils.printMethodName();
         int i = 10;
         String s = String.valueOf(i);
         System.out.println(s);
@@ -46,7 +47,7 @@ public class StringUsage {
     }
 
     private static void trimString() {
-        System.out.println("---------------trimString---------------");
+        ReflectionUtils.printMethodName();
         String s = " ab cd ef   ";
         //trim does not cut the blank space in the string
         String s1 = s.trim();
@@ -54,7 +55,7 @@ public class StringUsage {
     }
 
     private static void subString() {
-        System.out.println("---------------subString---------------");
+        ReflectionUtils.printMethodName();
         String s1 = "abcdefgh";
         String s2 = s1.substring(2);
         System.out.println(s2);
@@ -66,7 +67,7 @@ public class StringUsage {
     }
 
     private static void splitString() {
-        System.out.println("---------------splitString---------------");
+        ReflectionUtils.printMethodName();
         String s1 = "ab,cd,ef";
         String[] ss = s1.split(",");
         for (String s : ss
@@ -77,7 +78,7 @@ public class StringUsage {
     }
 
     private static void replaceString() {
-        System.out.println("---------------replaceString---------------");
+        ReflectionUtils.printMethodName();
         String s = "abcat";
         String s1 = s.replace('a', '1');
         System.out.println(s1);
@@ -91,7 +92,7 @@ public class StringUsage {
     }
 
     private static void indexOf() {
-        System.out.println("---------------indexOf---------------");
+        ReflectionUtils.printMethodName();
         String s = "abcded";
 
         int index = s.indexOf('d');
@@ -110,7 +111,7 @@ public class StringUsage {
     }
 
     private static void equals() {
-        System.out.println("---------------equals---------------");
+        ReflectionUtils.printMethodName();
         String s1 = "abc";
         String s2 = "abc";
         if (s1.equals(s2)) {
@@ -123,7 +124,7 @@ public class StringUsage {
     }
 
     private static void endWithAndStartWith() {
-        System.out.println("---------------endWithAndStartWith---------------");
+        ReflectionUtils.printMethodName();
         String s1 = "StringUsage.java";
         if (s1.endsWith(".java")) {
             System.out.println(s1 + " is a java file.");
@@ -136,7 +137,7 @@ public class StringUsage {
     }
 
     private static void concatString() {
-        System.out.println("---------------concatString---------------");
+        ReflectionUtils.printMethodName();
         String s1 = "abc";
         String s2 = "def";
         String s3 = s1.concat(s2);
@@ -151,7 +152,7 @@ public class StringUsage {
     }
 
     private static void compareString() {
-        System.out.println("---------------compareString---------------");
+        ReflectionUtils.printMethodName();
         String str1 = "abc";
         String str2 = "bcd";
         if (str1.compareTo(str2) > 0) {
@@ -168,13 +169,14 @@ public class StringUsage {
     }
 
     private static void charAtString() {
-        System.out.println("---------------charAtString---------------");
+        ReflectionUtils.printMethodName();
         String str = "abcdef";
         char c = str.charAt(1);
         System.out.println(c);
     }
 
     private static void construct() {
+        ReflectionUtils.printMethodName();
         String str = new String("abc");
         System.out.println(str);
         str = "def";
@@ -182,7 +184,7 @@ public class StringUsage {
     }
 
     public static void getBytes() {
-        System.out.println("---------------getBytes---------------");
+        ReflectionUtils.printMethodName();
         String s1 = "abc";
         byte[] bytes = s1.getBytes();
         for (int i = 0; i < bytes.length; i++) {

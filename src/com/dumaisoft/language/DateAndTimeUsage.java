@@ -1,5 +1,7 @@
 package com.dumaisoft.language;
 
+import com.dumaisoft.reflection.ReflectionUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,7 +25,7 @@ public class DateAndTimeUsage {
 
 
     private static void setTime() {
-        System.out.println("---------------setTime---------------");
+        ReflectionUtils.printMethodName();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 
         //first,set year,month and day
@@ -46,6 +48,7 @@ public class DateAndTimeUsage {
     }
 
     private static void formatTime() {
+        ReflectionUtils.printMethodName();
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
@@ -54,6 +57,7 @@ public class DateAndTimeUsage {
     }
 
     private static void getCurrentTime() {
+        ReflectionUtils.printMethodName();
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;  //notice
@@ -66,7 +70,7 @@ public class DateAndTimeUsage {
     }
 
     private static void moveTime() {
-        System.out.println("---------------moveTime---------------");
+        ReflectionUtils.printMethodName();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Calendar calendar = Calendar.getInstance();
         calendar.set(2016, 3, 2, 22, 21, 50);
@@ -84,7 +88,7 @@ public class DateAndTimeUsage {
 
 
     private static void compareTime() {
-        System.out.println("---------------compareTime---------------");
+        ReflectionUtils.printMethodName();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Calendar calendar1 = Calendar.getInstance();
         Calendar calendar2 = Calendar.getInstance();

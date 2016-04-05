@@ -1,5 +1,7 @@
 package com.dumaisoft.collection;
 
+import com.dumaisoft.reflection.ReflectionUtils;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -19,7 +21,7 @@ public class ArrayListUsage {
     }
 
     private static void changeElement() {
-        System.out.println("---------------removeElement---------------");
+        ReflectionUtils.printMethodName();
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             list.add(String.valueOf(i));
@@ -30,7 +32,7 @@ public class ArrayListUsage {
     }
 
     private static void removeElement() {
-        System.out.println("---------------removeElement---------------");
+        ReflectionUtils.printMethodName();
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             list.add(String.valueOf(i));
@@ -49,7 +51,7 @@ public class ArrayListUsage {
     }
 
     private static void addElement() {
-        System.out.println("---------------addElement---------------");
+        ReflectionUtils.printMethodName();
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             list.add(String.valueOf(i));
@@ -61,6 +63,7 @@ public class ArrayListUsage {
     }
 
     private static void construct() {
+        ReflectionUtils.printMethodName();
         //first construct method
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
