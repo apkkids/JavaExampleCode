@@ -21,8 +21,25 @@ public class DateAndTimeUsage {
         setTime();
         moveTime();
         compareTime();
+        Date2CalendarTransform();
     }
 
+    private static void Date2CalendarTransform() {
+        ReflectionUtils.printMethodName();
+        //transform Date to Calendar
+        Date date = new Date();
+        System.out.println(date);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        System.out.println(simpleDateFormat.format(calendar.getTime()));
+
+        //transform Calendar to Date
+        calendar.set(2016,3,2,12,0,0);
+        date = calendar.getTime();
+        System.out.println(date);
+    }
 
     private static void setTime() {
         ReflectionUtils.printMethodName();
