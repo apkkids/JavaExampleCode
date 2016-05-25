@@ -1,5 +1,7 @@
 package com.dumaisoft.algorithm;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -47,5 +49,14 @@ public class MD5Util {
     public static void main(String[] args) {
         System.out.println(GetMD5Code("000000"));
         System.out.println(GetMD5Code("000001"));
+        String strVeryLong = "The MD5 message-digest algorithm is a widely used vulnerable cryptographic hash function producing a 128-bit (16-byte) hash value, typically expressed in text format as a 32-digit hexadecimal number. MD5 has been utilized in a wide variety of cryptographic applications and is also commonly used to verify data integrity.\n" +
+                "\n" +
+                "MD5 is a one-way function; it is neither encryption nor encoding. It can be reversed by brute-force attack and suffers from extensive vulnerabilities as detailed in the security section below.\n" +
+                "\n" +
+                "MD5 was designed by Ronald Rivest in 1991 to replace an earlier hash function MD4.[3] The source code in RFC 1321 contains a \"by attribution\" RSA license.\n" +
+                "\n" +
+                "The security of the MD5 has been severely compromised, with its weaknesses having been exploited in the field, most infamously by the Flame malware in 2012. The CMU Software Engineering Institute considers MD5 essentially \"cryptographically broken and unsuitable for further use.";
+        System.out.println(GetMD5Code(strVeryLong));
+        System.out.println(GetMD5Code(strVeryLong).length());
     }
 }
