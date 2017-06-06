@@ -86,10 +86,12 @@ public class ConcurrentLinkedQueueExam {
 
         @Override
         public void run() {
-            for (int i = 0; i < TEST_INT; i++) {
+            int i = 0;
+            while (i < TEST_INT) {
                 synchronized (Getter.class) {
                     if (!queue.isEmpty()) {
                         queue.poll();
+                        i++;
                     }
                 }
             }
