@@ -24,35 +24,35 @@ public class CyclicBarrierExam {
         service.submit(new Traveler("Traveler3", barrier));
         service.shutdown();
     }
-}
+    private static class Traveler implements Runnable {
+        private final String name;
+        private final CyclicBarrier barrier;
+        private static Random rand = new Random(47);
 
-class Traveler implements Runnable {
-    private final String name;
-    private final CyclicBarrier barrier;
-    private static Random rand = new Random(47);
-
-    Traveler(String name, CyclicBarrier barrier) {
-        this.name = name;
-        this.barrier = barrier;
-    }
-
-    @Override
-    public void run() {
-        try {
-            TimeUnit.SECONDS.sleep(rand.nextInt(5));
-            System.out.println(name + " arrived at Beijing.");
-            barrier.await();
-            TimeUnit.SECONDS.sleep(rand.nextInt(5));
-            System.out.println(name + " arrived at Shanghai.");
-            barrier.await();
-            TimeUnit.SECONDS.sleep(rand.nextInt(5));
-            System.out.println(name + " arrived at Guangzhou.");
-            barrier.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (BrokenBarrierException e) {
-            e.printStackTrace();
+        Traveler(String name, CyclicBarrier barrier) {
+            this.name = name;
+            this.barrier = barrier;
         }
 
+        @Override
+        public void run() {
+            try {
+                TimeUnit.SECONDS.sleep(rand.nextInt(5));
+                System.out.println(name + " arrived at Beijing.");
+                barrier.await();
+                TimeUnit.SECONDS.sleep(rand.nextInt(5));
+                System.out.println(name + " arrived at Shanghai.");
+                barrier.await();
+                TimeUnit.SECONDS.sleep(rand.nextInt(5));
+                System.out.println(name + " arrived at Guangzhou.");
+                barrier.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 }
+

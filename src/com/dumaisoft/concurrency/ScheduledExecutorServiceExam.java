@@ -13,8 +13,8 @@ import java.util.concurrent.*;
  */
 public class ScheduledExecutorServiceExam {
     public static void main(String[] args) {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
-        ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate(new Runnable() {
+        final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
+        final ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
                 System.out.println("beep");

@@ -9,16 +9,18 @@ import java.util.concurrent.TimeUnit;
 /**
  * Author:      wxb
  * Project:     JavaExampleCode
- * Create Date: 2017/4/24
- * Create Time: 21:28
+ * Create Date: 2017/7/1
+ * Create Time: 21:48
  * Description:
  */
-public class ExchangerExam {
+public class ExchangerExam3 {
     public static void main(String[] args) {
         Exchanger<String> exchanger = new Exchanger<>();
         ExecutorService service = Executors.newCachedThreadPool();
-        service.submit(new StringHolder("LeftHand", "LeftValue", exchanger));
-        service.submit(new StringHolder("RightHand", "RightValue", exchanger));
+        service.submit(new StringHolder("North", "NorthValue", exchanger));
+        service.submit(new StringHolder("East", "EastValue", exchanger));
+        service.submit(new StringHolder("West", "WestValue", exchanger));
+        service.submit(new StringHolder("South", "SouthValue", exchanger));
         service.shutdown();
     }
 
@@ -37,15 +39,15 @@ public class ExchangerExam {
         @Override
         public void run() {
             try {
-                System.out.println(name + " hold the val:" + val);
-                TimeUnit.SECONDS.sleep(rand.nextInt(5));
-                String str = exchanger.exchange(val);
-                System.out.println(name + " get the val:" + str);
+                for (int i = 0; i < 10000; i++) {
+                    System.out.println(name + "-" + i + ": hold the val:" + val + i);
+                    TimeUnit.NANOSECONDS.sleep(rand.nextInt(5));
+                    String str = exchanger.exchange(val + i);
+                    System.out.println(name + "-" + i + ": get the val:" + str);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 }
-
-

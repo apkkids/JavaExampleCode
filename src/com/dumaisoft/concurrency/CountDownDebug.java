@@ -11,7 +11,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class CountDownDebug {
     public static void main(String[] args) {
-        CountDownLatch latch = new CountDownLatch(3);
+        final CountDownLatch latch = new CountDownLatch(3);
         Thread t1 = new Thread() {
             @Override
             public void run() {

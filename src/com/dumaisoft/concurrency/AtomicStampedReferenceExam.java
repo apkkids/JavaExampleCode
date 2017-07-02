@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  */
 public class AtomicStampedReferenceExam {
     public static void main(String[] args) throws InterruptedException {
-        MyStack<String> stack = new MyStack<>();
+        final MyStack<String> stack = new MyStack<>();
         stack.push("B");
         stack.push("A");
         System.out.println("Stack init:" + stack);

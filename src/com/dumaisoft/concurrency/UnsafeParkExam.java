@@ -16,8 +16,8 @@ public class UnsafeParkExam {
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Field f = Unsafe.class.getDeclaredField("theUnsafe");
         f.setAccessible(true);
-        Unsafe unsafe = (Unsafe) f.get(null);
-        Thread t1 = new Thread() {
+        final Unsafe unsafe = (Unsafe) f.get(null);
+        final Thread t1 = new Thread() {
             @Override
             public void run() {
                 Thread.currentThread().setName("t1");

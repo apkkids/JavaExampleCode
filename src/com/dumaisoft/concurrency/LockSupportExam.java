@@ -12,7 +12,7 @@ import java.util.concurrent.locks.LockSupport;
  */
 public class LockSupportExam {
     public static void main(String[] args) {
-        Thread t1 = new Thread() {
+        final Thread t1 = new Thread() {
             @Override
             public void run() {
                 Thread.currentThread().setName("t1");

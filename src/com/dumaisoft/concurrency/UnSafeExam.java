@@ -34,7 +34,7 @@ public class UnSafeExam {
                 //得到一个对象内部属性的地址
                 long x_addr = unsafe.objectFieldOffset(Test.class.getDeclaredField("x"));
                 //直接给此属性赋值
-                unsafe.getAndSetInt(test, x_addr, 47);
+//                unsafe.getAndSetInt(test, x_addr, 47);
                 System.out.println(test.getX());
             } catch (InstantiationException e) {
                 e.printStackTrace();
@@ -59,7 +59,7 @@ public class UnSafeExam {
         if (unsafe != null) {
             Test test = (Test) unsafe.allocateInstance(Test.class);
             long x_addr = unsafe.objectFieldOffset(Test.class.getDeclaredField("x"));
-            unsafe.getAndSetInt(test, x_addr, 47);
+//            unsafe.getAndSetInt(test, x_addr, 47);
             unsafe.compareAndSwapInt(test, x_addr, 47, 78);
             System.out.println("After CAS:" + test.getX());
         }

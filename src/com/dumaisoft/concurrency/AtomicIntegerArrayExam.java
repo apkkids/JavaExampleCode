@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
  */
 public class AtomicIntegerArrayExam {
     public static void main(String[] args) throws InterruptedException {
-        AtomicIntegerArray array = new AtomicIntegerArray(5);
+        final AtomicIntegerArray array = new AtomicIntegerArray(5);
         array.set(0, 0);
         array.set(1, 0);
         ExecutorService service = Executors.newCachedThreadPool();

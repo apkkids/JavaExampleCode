@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class AtomReferenceExam {
     public static void main(String[] args) throws InterruptedException {
-        AtomicReference<Element> reference = new AtomicReference<>(new Element(0, 0));
+        final AtomicReference<Element> reference = new AtomicReference<>(new Element(0, 0));
 
         ExecutorService service = Executors.newCachedThreadPool();
         for (int i = 0; i < 10; i++) {

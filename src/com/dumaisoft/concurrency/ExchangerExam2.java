@@ -9,18 +9,23 @@ import java.util.concurrent.TimeUnit;
 /**
  * Author:      wxb
  * Project:     JavaExampleCode
- * Create Date: 2017/4/24
- * Create Time: 21:28
+ * Create Date: 2017/7/1
+ * Create Time: 21:21
  * Description:
  */
-public class ExchangerExam {
-    public static void main(String[] args) {
+public class ExchangerExam2 {
+    public static void main(String[] args) throws InterruptedException {
         Exchanger<String> exchanger = new Exchanger<>();
         ExecutorService service = Executors.newCachedThreadPool();
+        long start = System.currentTimeMillis();
         service.submit(new StringHolder("LeftHand", "LeftValue", exchanger));
         service.submit(new StringHolder("RightHand", "RightValue", exchanger));
         service.shutdown();
+        service.awaitTermination(1, TimeUnit.DAYS);
+        long end = System.currentTimeMillis();
+        System.out.println("time span is " + (end - start) + " milliseconds");
     }
+
 
     private static class StringHolder implements Runnable {
         private final String name;
@@ -37,15 +42,15 @@ public class ExchangerExam {
         @Override
         public void run() {
             try {
-                System.out.println(name + " hold the val:" + val);
-                TimeUnit.SECONDS.sleep(rand.nextInt(5));
-                String str = exchanger.exchange(val);
-                System.out.println(name + " get the val:" + str);
+                for (int i = 0; i < 10000; i++) {
+//                    System.out.println(name + "-" + i + ": hold the val:" + val + i);
+//                    TimeUnit.NANOSECONDS.sleep(rand.nextInt(5));
+                    String str = exchanger.exchange(val + i);
+//                    System.out.println(name + "-" + i + ": get the val:" + str);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 }
-
-

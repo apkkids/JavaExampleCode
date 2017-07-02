@@ -24,29 +24,29 @@ public class SemaphoreExam {
 
         service.shutdown();
     }
-}
+    private static class Car implements Runnable {
+        private final String name;
+        private final Semaphore semaphore;
+        private static Random random = new Random(System.currentTimeMillis());
 
-class Car implements Runnable {
-    private final String name;
-    private final Semaphore semaphore;
-    private static Random random = new Random(43);
+        Car(String name, Semaphore semaphore) {
+            this.name = name;
+            this.semaphore = semaphore;
+        }
 
-    Car(String name, Semaphore semaphore) {
-        this.name = name;
-        this.semaphore = semaphore;
-    }
-
-    @Override
-    public void run() {
-        try {
-            System.out.println(name + " is waiting for a permit");
-            semaphore.acquire();
-            System.out.println(name+" get a permit to access");
-            TimeUnit.SECONDS.sleep(random.nextInt(5));
-            System.out.println(name + " release a permit to available");
-            semaphore.release();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        @Override
+        public void run() {
+            try {
+                System.out.println(name + " is waiting for a permit");
+                semaphore.acquire();
+                System.out.println(name+" get a permit to access, available permits:"+semaphore.availablePermits());
+                TimeUnit.SECONDS.sleep(random.nextInt(5));
+                System.out.println(name + " release a permit, available permits:"+semaphore.availablePermits());
+                semaphore.release();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
+

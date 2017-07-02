@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AtomicFloatExam {
     public static void main(String[] args) throws InterruptedException {
         float f = 3.14f;
-        AtomicInteger atomicInteger = new AtomicInteger(Float.floatToIntBits(f));
+        final AtomicInteger atomicInteger = new AtomicInteger(Float.floatToIntBits(f));
         System.out.println(atomicInteger.get());
         System.out.println(Float.intBitsToFloat(atomicInteger.get()));
 

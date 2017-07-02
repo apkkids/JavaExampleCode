@@ -14,8 +14,8 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
  */
 public class AtomicIntegerFieldUpdaterExam {
     public static void main(String[] args) throws InterruptedException {
-        Student student = new Student(0, "Alex Wang");
-        AtomicIntegerFieldUpdater<Student> updater = AtomicIntegerFieldUpdater.newUpdater(Student.class, "id");
+        final Student student = new Student(0, "Alex Wang");
+        final AtomicIntegerFieldUpdater<Student> updater = AtomicIntegerFieldUpdater.newUpdater(Student.class, "id");
         ExecutorService service = Executors.newCachedThreadPool();
         for (int i = 0; i < 10; i++) {
             service.execute(new Runnable() {
