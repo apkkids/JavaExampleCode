@@ -24,7 +24,9 @@ public class PhaserExam1 {
         try {
             System.out.println("main thread sleep for 5 seconds.");
             TimeUnit.SECONDS.sleep(5);
-            //到达并deregister，此时parties会减少至0，从而释放所有线程
+            System.out.println("In main thread, registered parties:" + phaser.getRegisteredParties());
+            System.out.println("In main thread, arrived parties:" + phaser.getArrivedParties());
+            //到达并deregister，此时parties会减少至3，从而释放所有线程
             phaser.arriveAndDeregister();
             System.out.println("main thread releases all waiting threads.");
         } catch (InterruptedException e) {
@@ -43,10 +45,10 @@ public class PhaserExam1 {
         public void run() {
             //每个线程register，意味着parties加1
             phaser.register();
-            System.out.println(Thread.currentThread() + " is waiting for synchronization");
+            System.out.println(Thread.currentThread() + " is waiting for synchronization, registered parties:" + phaser.getRegisteredParties());
             //等待所有parties到达
             phaser.arriveAndAwaitAdvance();
-            System.out.println(Thread.currentThread()+" is over");
+            System.out.println(Thread.currentThread() + " is arrived, arrived parties:" + phaser.getArrivedParties());
         }
     }
 }
