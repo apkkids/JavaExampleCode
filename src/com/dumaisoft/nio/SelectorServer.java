@@ -8,6 +8,7 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
+import java.util.Set;
 
 /**
  * Author:      wxb
@@ -37,7 +38,8 @@ public class SelectorServer {
                     continue;
                 }
                 //3.轮询SelectionKey
-                Iterator<SelectionKey> iterator = (Iterator) selector.selectedKeys().iterator();
+                Set<SelectionKey> selectionKeySet = selector.selectedKeys();
+                Iterator<SelectionKey> iterator = selectionKeySet.iterator();
                 while (iterator.hasNext()) {
                     SelectionKey key = iterator.next();
                     //如果满足Acceptable条件，则必定是一个ServerSocketChannel
@@ -65,13 +67,17 @@ public class SelectorServer {
     }
 
     private static void readFromChannel(SocketChannel channel) {
+        int count ;
         buffer.clear();
         try {
-            while (channel.read(buffer) > 0) {
+            while ((count = channel.read(buffer)) > 0) {
                 buffer.flip();
                 byte[] bytes = new byte[buffer.remaining()];
                 buffer.get(bytes);
                 System.out.println("READ FROM CLIENT:" + new String(bytes));
+            }
+            if (count < 0) {
+                channel.close();
             }
         } catch (IOException e) {
             e.printStackTrace();

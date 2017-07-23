@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  * Description:
  */
 public class SelectorClient {
+    private static final int PORT = 1234;
     static class Client extends Thread {
         private String name;
         private Random random = new Random(47);
@@ -30,7 +31,7 @@ public class SelectorClient {
             try {
                 SocketChannel channel = SocketChannel.open();
                 channel.configureBlocking(false);
-                channel.connect(new InetSocketAddress(1234));
+                channel.connect(new InetSocketAddress(PORT));
                 while (!channel.finishConnect()) {
                     TimeUnit.MILLISECONDS.sleep(100);
                 }
@@ -46,6 +47,7 @@ public class SelectorClient {
                     buffer.clear();
                 }
                 channel.close();
+                System.out.println(name+" is closed.");
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -60,5 +62,10 @@ public class SelectorClient {
         executorService.submit(new Client("Client-2"));
         executorService.submit(new Client("Client-3"));
         executorService.shutdown();
+        try {
+            executorService.awaitTermination(1,TimeUnit.DAYS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
