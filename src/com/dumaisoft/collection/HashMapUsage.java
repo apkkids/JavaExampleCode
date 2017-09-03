@@ -50,7 +50,7 @@ public class HashMapUsage {
         }
         System.out.println("before change:" + map);
         if (map.containsKey("key1")) {
-            map.replace("key1", "new-value");
+//            map.replace("key1", "new-value");
         }
         System.out.println("after  change:" + map);
     }
