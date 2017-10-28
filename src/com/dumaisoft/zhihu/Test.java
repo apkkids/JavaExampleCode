@@ -21,8 +21,8 @@ public class Test {
         System.out.println(Integer.highestOneBit(-1));
 
 
-        int seed = sun.misc.Hashing.randomHashSeed(new Object());
-        System.out.println(seed);
+//        int seed = sun.misc.Hashing.randomHashSeed(new Object());
+//        System.out.println(seed);
 
         ConcurrentHashMap<Integer, String> hashMap = new ConcurrentHashMap<>();
         for (int i = 0; i < 10; i++) {
