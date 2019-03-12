@@ -2,6 +2,7 @@
   <library name="lpsolve55j">
     <CLASSES>
       <root url="jar://D:/codeSrc/javaLibs/lpsolve55j.jar!/" />
+      <root url="jar://D:/MyLibs/commons-collections-3.2.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
