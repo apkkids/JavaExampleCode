@@ -126,6 +126,12 @@ public class ArrayList100W2 {
         });
         end = System.currentTimeMillis();
         System.out.println("线程数量(默认为CPU核心数):, 花费的时间:" + (end - start) + " milliseconds, " + "type等于2的个数有:" + atomicResult.get());
+
+        //第六种方法，使用filter
+        start = System.currentTimeMillis();
+        long totalCount = myObjectArrayList.parallelStream().filter(element-> 2== element.type).count();
+        end = System.currentTimeMillis();
+        System.out.println("filter方法(默认为CPU核心数):, 花费的时间:" + (end - start) + " milliseconds, " + "type等于2的个数有:" + totalCount);
     }
 }
 
