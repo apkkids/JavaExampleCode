@@ -87,8 +87,8 @@ public class ArrayList100W2 {
         end = System.currentTimeMillis();
         System.out.println("线程数量:" + THREAD_NUMBER + "(数组存储)花费的时间:" + (end - start) + " milliseconds, " + "type等于2的个数有:" + numberEquals2);
 
-        //第四种方法，获取本机CPU核心数*2，设置为线程数量
-        THREAD_NUMBER = Runtime.getRuntime().availableProcessors() * 2;
+        //第四种方法，获取本机CPU核心数，设置为线程数量
+        THREAD_NUMBER = Runtime.getRuntime().availableProcessors();
         SLICE_LENGTH = LIST_LENGTH / THREAD_NUMBER;
         start = System.currentTimeMillis();
         int[] result2 = new int[THREAD_NUMBER];
@@ -113,7 +113,7 @@ public class ArrayList100W2 {
             numberEquals2 += result2[i];
         }
         end = System.currentTimeMillis();
-        System.out.println("线程数量:" + THREAD_NUMBER + "(CPU核心*2)花费的时间:" + (end - start) + " milliseconds, " + "type等于2的个数有:" + numberEquals2);
+        System.out.println("线程数量:" + THREAD_NUMBER + "(CPU核心)花费的时间:" + (end - start) + " milliseconds, " + "type等于2的个数有:" + numberEquals2);
 
 
         //第五种方法，使用parallelStream
@@ -129,7 +129,7 @@ public class ArrayList100W2 {
 
         //第六种方法，使用filter
         start = System.currentTimeMillis();
-        long totalCount = myObjectArrayList.parallelStream().filter(element-> 2== element.type).count();
+        long totalCount = myObjectArrayList.parallelStream().filter(element-> element.judge()).count();
         end = System.currentTimeMillis();
         System.out.println("filter方法(默认为CPU核心数):, 花费的时间:" + (end - start) + " milliseconds, " + "type等于2的个数有:" + totalCount);
     }
@@ -140,5 +140,9 @@ class MyObject {
 
     MyObject() {
         type = new Random().nextInt(100);
+    }
+
+    boolean judge(){
+        return type ==2;
     }
 }
